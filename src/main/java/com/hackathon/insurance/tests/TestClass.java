@@ -85,7 +85,7 @@ public class TestClass extends BasicAutomation {
 		mainPage.selectDate("25/05/2021", "25/06/2021");
 	}
 	
-	//@Test
+	@Test
 	public void TC012() {
 		logger = report.createTest("Test Case Ten");
 		invokeBrowser("chrome");
@@ -100,6 +100,7 @@ public class TestClass extends BasicAutomation {
 		String quoteBtnAtr = getElement("getQuoteButton_Id").getAttribute("class");
 		Assert.assertEquals(quoteBtnAtr.contains("active"), false);
 	}
+	//
 	
 	
 }

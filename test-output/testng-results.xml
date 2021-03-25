@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-03-25T20:12:49 IST" name="Default suite" finished-at="2021-03-25T20:13:33 IST" duration-ms="43452">
+  <suite started-at="2021-03-25T20:37:43 IST" name="Default suite" finished-at="2021-03-25T20:38:53 IST" duration-ms="69653">
     <groups>
     </groups>
-    <test started-at="2021-03-25T20:12:49 IST" name="Default test" finished-at="2021-03-25T20:13:33 IST" duration-ms="43452">
+    <test started-at="2021-03-25T20:37:43 IST" name="Default test" finished-at="2021-03-25T20:38:53 IST" duration-ms="69653">
       <class name="com.hackathon.insurance.tests.TestClass">
-        <test-method signature="TC012()[pri:0, instance:com.hackathon.insurance.tests.TestClass@6ff29830]" started-at="2021-03-25T20:12:49 IST" name="TC012" finished-at="2021-03-25T20:13:31 IST" duration-ms="41431" status="PASS">
+        <test-method signature="TC012()[pri:0, instance:com.hackathon.insurance.tests.TestClass@6ff29830]" started-at="2021-03-25T20:37:44 IST" name="TC012" finished-at="2021-03-25T20:38:41 IST" duration-ms="57908" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC012 -->
-        <test-method is-config="true" signature="flushReports()[pri:0, instance:com.hackathon.insurance.tests.TestClass@6ff29830]" started-at="2021-03-25T20:13:31 IST" name="flushReports" finished-at="2021-03-25T20:13:32 IST" duration-ms="1895" status="PASS">
+        <test-method is-config="true" signature="flushReports()[pri:0, instance:com.hackathon.insurance.tests.TestClass@6ff29830]" started-at="2021-03-25T20:38:41 IST" name="flushReports" finished-at="2021-03-25T20:38:53 IST" duration-ms="11527" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReports -->
