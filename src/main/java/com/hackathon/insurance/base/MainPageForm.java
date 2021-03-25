@@ -22,19 +22,18 @@ public class MainPageForm extends PageBaseClass{
 	
 	public void addTraveller(String firstAge, String secondAge) {
 		try{
-			elementClick("travellerLabel_Xpath");
+//			elementClick("travellerLabel_Xpath");
 			selectElementByText("firstTravellerAge_Xpath", firstAge);
 			logger.log(Status.INFO, "First traveller added");
+			addWait(10);
 			elementClick("addTraveller_Btn_Xpath");
 			selectElementByText("secondTravellerAge_Xpath", secondAge);
-			elementClick("nextButton_Xpath");
 			logger.log(Status.INFO, "Second traveller added");
 		}
 		catch(Exception e) {
 			reportFail(e.getMessage());
 		}
 	}
-	
 	public void selectDate(String startDate, String endDate) {
 		///The date format MUST BE IN "dd/mm/yyyy" FORMAT///
 		try{
@@ -49,9 +48,11 @@ public class MainPageForm extends PageBaseClass{
 	}
 	
 	
-	public InsuranceList enterPhoneDetails() {
-		
-		enterText("mobileNumber_Id","9832100000");
+	public InsuranceList enterPhoneDetails(String countryName, String phoneNumber) {
+		elementClick("countryCode_Xpath");
+		enterText("countryCodeName_Xpath",countryName);
+		elementClick("countrycodeSelct_Xpath");
+		enterText("mobileNumber_Id",phoneNumber);
 		elementClick("getQuote_Btn_Xpath");
 		InsuranceList insList = new InsuranceList(driver, logger);
 		PageFactory.initElements(driver, insList);
