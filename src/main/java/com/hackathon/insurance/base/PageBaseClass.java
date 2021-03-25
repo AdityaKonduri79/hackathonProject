@@ -71,8 +71,9 @@ public class PageBaseClass extends BasicAutomation{
 	public void selectCountrySearch( String country) {
 //		excel = new ReadExcelFile(System.getProperty("user-dir")+"\\test-output\\data-sheet.xlsx");
 		//String country = excel.getCellData("Input-data", colNum, rowNum);
-		enterText("countrySearch_Xpath",  country);
 		addWait(10);
+		elementClick("anotherCountry_Xpath");
+		enterText("countrySearch_Xpath",  country);
 		String countryCapitalize = country.substring(0,1).toUpperCase() + country.substring(1);
 		driver.findElement(By.xpath(prop.getProperty("countrySelect_Xpath").replace("France",countryCapitalize))).click();
 		
