@@ -1,6 +1,7 @@
 package com.hackathon.insurance.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import com.hackathon.insurance.base.BasicAutomation;
 import com.hackathon.insurance.base.HomePage;
@@ -8,26 +9,10 @@ import com.hackathon.insurance.base.MainPageForm;
 import com.hackathon.insurance.base.PageBaseClass;
 
 public class TestScenarioTwo extends BasicAutomation {
-//	@Test
-//	public void testCaseOne() {
-//		logger = report.createTest("Test Case One");
-//		invokeBrowser("chrome");
-//		PageBaseClass pageClass = new PageBaseClass(driver,logger);
-//		HomePage homePage = pageClass.openWebsite();
-//		MainPageForm mainPage = homePage.clickIns();
-//		mainPage.selectCountry("france");
-//		mainPage.addTraveller("21 yrs","22 yrs");
-//		elementClick("nextButton_Xpath");
-//		mainPage.selectDate("25/05/2021","25/06/2021");
-//		InsuranceList insList = mainPage.enterPhoneDetails();
-//		insList.sortList();
-//		insList.selectTopThree();
-//
-//	}
 	
-//	@Test
-	public void TC008() {
-		logger = report.createTest("Test Case Eight");
+	@Test
+	public void TC008() { //To check the functionality of "Add Another Traveller" button.
+		logger = report.createTest("Test Case Eight - To check the functionality of 'Add Another Traveller' button");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
@@ -37,9 +22,9 @@ public class TestScenarioTwo extends BasicAutomation {
 		Assert.assertEquals(isElementPresent("addTraveller_Btn_Xpath"),true);
 	}
 	
-	//@Test
-	public void TC009(){
-		logger = report.createTest("Test Case Nine");
+	@Test
+	public void TC009(){ //To check whether user can enter age details of second person in the age dropbox
+		logger = report.createTest("Test Case Nine - To check whether user can enter age details of second person in the age dropbox");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
@@ -51,9 +36,9 @@ public class TestScenarioTwo extends BasicAutomation {
 		
 	}
 	
-	//@Test
-	public void TC010(){
-		logger = report.createTest("Test Case Ten");
+	@Test
+	public void TC010(){ //To check the functionality of "Any Pre-Existing Medical Condition" checkbox for the Second traveller
+		logger = report.createTest("Test Case Ten - To check the functionality of \"Any Pre-Existing Medical Condition\" checkbox for the Second traveller");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
@@ -67,9 +52,9 @@ public class TestScenarioTwo extends BasicAutomation {
 		
 	}
 	
-	//@Test
-	public void TC011(){
-		logger = report.createTest("Test Case Eleven");
+	@Test
+	public void TC011(){ //To check the functionality of Start Date and End Date option under the field - 'Trip Dates'
+		logger = report.createTest("Test Case Eleven - To check the functionality of Start Date and End Date option under the field - 'Trip Dates'");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
@@ -81,9 +66,9 @@ public class TestScenarioTwo extends BasicAutomation {
 		mainPage.selectDate("25/05/2021", "25/06/2021");
 	}
 	
-	//@Test
-	public void TC012() {
-		logger = report.createTest("Test Case Twelve");
+	@Test
+	public void TC012() { //To check whether the user is able to enter the value of  end date before the staring date
+		logger = report.createTest("Test Case Twelve - To check whether the user is able to enter the value of  end date before the staring date");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
@@ -97,9 +82,9 @@ public class TestScenarioTwo extends BasicAutomation {
 		Assert.assertEquals(quoteBtnAtr.contains("active"), false);
 	}
 	
-	//@Test
-	public void TC013() {
-		logger = report.createTest("Test Case Thirteen");
+	@Test
+	public void TC013() { //To check functionality of delete button
+		logger = report.createTest("Test Case Thirteen - To check functionality of delete button");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
@@ -108,7 +93,7 @@ public class TestScenarioTwo extends BasicAutomation {
 		elementClick("travellerLabel_Xpath");
 		mainPage.addTraveller("21 yrs", "22 yrs");
 		elementClick("deleteBtn_Xpath");
-		Assert.assertEquals(isElementPresent("deleteBtn_Xpath"), false);
+		Assert.assertEquals(isElementPresent("traveller1_Xpath"), true);
 	}
 	
 	
