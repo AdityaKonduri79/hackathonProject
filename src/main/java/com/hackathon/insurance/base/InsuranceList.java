@@ -3,6 +3,7 @@ package com.hackathon.insurance.base;
 import java.util.Iterator;
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -30,7 +31,22 @@ public class InsuranceList extends PageBaseClass {
 			System.out.print(" - "+priceElement.getText().replace("₹ ", ""));
 			System.out.println();
 		}
-		
-		
 	}
+	
+	public void destinationEdit(String destination){
+		elementClick("destinationEdit_Xpath");
+		enterText("destinationSearch_Xpath", destination);
+		getElement("destinationSearch_Xpath").sendKeys(Keys.ENTER);
+		elementClick("applyDestination_Xpath");
+	}
+	
+	public void travellerEdit(){
+		elementClick("travellerEdit_Xpath");
+	}
+	
+	public void dateEdit(){
+		elementClick("tripDateEdit_Xpath");
+	}
+	
+	
 }

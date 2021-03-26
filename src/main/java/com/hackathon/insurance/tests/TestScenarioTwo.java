@@ -1,14 +1,13 @@
 package com.hackathon.insurance.tests;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import com.hackathon.insurance.base.BasicAutomation;
 import com.hackathon.insurance.base.HomePage;
 import com.hackathon.insurance.base.MainPageForm;
 import com.hackathon.insurance.base.PageBaseClass;
 
-public class TestClass extends BasicAutomation {
+public class TestScenarioTwo extends BasicAutomation {
 //	@Test
 //	public void testCaseOne() {
 //		logger = report.createTest("Test Case One");
@@ -54,26 +53,23 @@ public class TestClass extends BasicAutomation {
 	
 	//@Test
 	public void TC010(){
-		logger = report.createTest("Test Case Nine");
+		logger = report.createTest("Test Case Ten");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
 		MainPageForm mainPage = homePage.clickIns();
 		mainPage.selectCountrySearch("france");
+		mainPage.selectCountrySearch("germany");
 		elementClick("travellerLabel_Xpath");
 		mainPage.addTraveller("21 yrs", "22 yrs");
 		elementClick("medicalCondition_Id");
 		Assert.assertEquals(isElementSelected("medicalCondition_Id"), true);
 		
-		
-		
-		
-		
 	}
 	
 	//@Test
 	public void TC011(){
-		logger = report.createTest("Test Case Ten");
+		logger = report.createTest("Test Case Eleven");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
@@ -85,9 +81,9 @@ public class TestClass extends BasicAutomation {
 		mainPage.selectDate("25/05/2021", "25/06/2021");
 	}
 	
-	@Test
+	//@Test
 	public void TC012() {
-		logger = report.createTest("Test Case Ten");
+		logger = report.createTest("Test Case Twelve");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
@@ -100,7 +96,20 @@ public class TestClass extends BasicAutomation {
 		String quoteBtnAtr = getElement("getQuoteButton_Id").getAttribute("class");
 		Assert.assertEquals(quoteBtnAtr.contains("active"), false);
 	}
-	//
+	
+	//@Test
+	public void TC013() {
+		logger = report.createTest("Test Case Thirteen");
+		invokeBrowser("chrome");
+		PageBaseClass pageClass = new PageBaseClass(driver,logger);
+		HomePage homePage = pageClass.openWebsite();
+		MainPageForm mainPage = homePage.clickIns();
+		mainPage.selectCountrySearch("france");
+		elementClick("travellerLabel_Xpath");
+		mainPage.addTraveller("21 yrs", "22 yrs");
+		elementClick("deleteBtn_Xpath");
+		Assert.assertEquals(isElementPresent("deleteBtn_Xpath"), false);
+	}
 	
 	
 }

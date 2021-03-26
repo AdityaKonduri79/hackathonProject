@@ -5,7 +5,7 @@
     <classes>
       <class name="com.hackathon.insurance.tests.TestClass">
         <methods>
-          <include name="TC012"/>
+          <include name="TC021"/>
           <include name="flushReports"/>
         </methods>
       </class> <!-- com.hackathon.insurance.tests.TestClass -->
