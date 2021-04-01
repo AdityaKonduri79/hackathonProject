@@ -1,5 +1,6 @@
 package com.hackathon.insurance.tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.hackathon.insurance.base.BasicAutomation;
@@ -10,12 +11,11 @@ import com.hackathon.insurance.base.PageBaseClass;
 
 public class ProblemStatementTest extends BasicAutomation {
 
-	@Test
-	public void testCaseOne() {
+	@Test(dataProvider ="excelData")
+	public void testCaseOne(int rowNum) {
 		logger = report.createTest("Test Case One");
-		PageBaseClass.getExcelData(2);
+		PageBaseClass.getExcelData(rowNum);
 		String[] data = PageBaseClass.getExcelData(2);
-		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
 		MainPageForm mainPage = homePage.clickIns();
@@ -26,5 +26,10 @@ public class ProblemStatementTest extends BasicAutomation {
 		InsuranceList insList = mainPage.enterPhoneDetails(data);
 		insList.sortList();
 		insList.selectTopThree();
+	}
+
+	@DataProvider(name ="excelData")
+	public Object[] excelRow() {
+		return new Object[] {2,6,7};
 	}
 }

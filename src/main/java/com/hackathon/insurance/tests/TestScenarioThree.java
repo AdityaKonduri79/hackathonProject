@@ -79,7 +79,7 @@ public class TestScenarioThree extends BasicAutomation{
 	public void TC018(){
 		logger = report.createTest("Test Case eighteen");
 		invokeBrowser("chrome");
-		String[] data = PageBaseClass.getExcelData(2);
+		String[] data = PageBaseClass.getExcelData(5);
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
 		MainPageForm mainPage = homePage.clickIns();
@@ -97,7 +97,7 @@ public class TestScenarioThree extends BasicAutomation{
 	public void TC019(){ //To check whether the user can view plans without giving an input for mobile number.
 		logger = report.createTest("Test Case nineteen - To check whether the user can view plans without giving an input for mobile number.");
 		invokeBrowser("chrome");
-		String[] data = PageBaseClass.getExcelData(2);
+		String[] data = PageBaseClass.getExcelData(4);
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
 		MainPageForm mainPage = homePage.clickIns();

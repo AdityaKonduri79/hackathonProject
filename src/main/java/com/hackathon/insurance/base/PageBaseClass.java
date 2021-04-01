@@ -124,13 +124,14 @@ public class PageBaseClass extends BasicAutomation{
 	}
 	
 	
-	public static void setExcelData(String provider, String amount) {
+	public static boolean setExcelData(String provider, String amount) {
 		excel = new ReadExcelFile(System.getProperty("user.dir")+
 				"\\src\\test\\resources\\ObjectRepositiory\\dataSheet.xlsx");
-		int i = excel.getLastRow("OutputData");
+		int i = excel.getLastRow("OutputData")+2;
 		
-		excel.setCellData("OutputData", 0, i, provider);
-		excel.setCellData("OutputData", 1, i, amount);
+		excel.setCellData("OutputData", "Provider Name", i, provider);
+		boolean done = excel.setCellData("OutputData", "Price", i, amount);
+		return done;
 	}
 	
 	public static String[] getExcelData(int rowNum) {
@@ -139,7 +140,6 @@ public class PageBaseClass extends BasicAutomation{
 			+ "\\src\\test\\resources\\ObjectRepositiory\\dataSheet.xlsx");
 	for(int colNum=0; colNum<excel.getColumnCount("InputData") ; colNum++) {
 		data[colNum] = excel.getCellData("InputData",colNum , rowNum);
-		System.out.println(data[colNum]);
 	}
 	
 	return data;

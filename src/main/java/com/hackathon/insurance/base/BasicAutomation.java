@@ -16,8 +16,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-
+import org.testng.annotations.BeforeMethod;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -264,16 +265,23 @@ public class BasicAutomation {
 	}
 
 	/************************************************
-					After Methods
+					Test Methods
  	***********************************************/
 	
+	@BeforeMethod
+	public void openBrowser() {
+		invokeBrowser("chrome");
+	}
 	@AfterMethod
-	public void flushReports() {
-		report.flush();
+	public void closeBrowser() {
 		tearDown();
 	}
 	
-
+	@AfterClass
+	public void flushReports() {
+		report.flush();
+		
+	}
 
 	
 }

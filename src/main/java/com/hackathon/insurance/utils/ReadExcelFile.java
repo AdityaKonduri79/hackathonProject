@@ -24,10 +24,10 @@ public class ReadExcelFile {
 	public String path;
 	public FileInputStream fis = null;
 	public FileOutputStream fileOut = null;
-	private XSSFWorkbook workbook = null;
-	private XSSFSheet sheet = null;
-	private XSSFRow row = null;
-	private XSSFCell cell = null;
+	public XSSFWorkbook workbook = null;
+	public XSSFSheet sheet = null;
+	public XSSFRow row = null;
+	public XSSFCell cell = null;
 
 	/****************** Constructor ***********************/
 	public ReadExcelFile(String path) {
@@ -164,7 +164,7 @@ public class ReadExcelFile {
 
 	
 	/****************** Returns true if data is set successfully else false ***********************/
-	public boolean setCellData(String sheetName, int colName, int rowNum, String data) {
+	public boolean setCellData(String sheetName, String colName, int rowNum, String data) {
 		try {
 			fis = new FileInputStream(path);
 			workbook = new XSSFWorkbook(fis);
@@ -174,13 +174,19 @@ public class ReadExcelFile {
 
 			int index = workbook.getSheetIndex(sheetName);
 			int colNum = -1;
-			if (index == -1)
-				return false;
+			if (index == -1) {
+			
+				return false;}
 
 			sheet = workbook.getSheetAt(index);
 
 			row = sheet.getRow(0);
-			if (colNum == -1)
+			for(int i=0;i<row.getLastCellNum();i++){
+		            //System.out.println(row.getCell(i).getStringCellValue().trim());
+		            if(row.getCell(i).getStringCellValue().trim().equals(colName))
+		                colNum=i;
+			}
+			if (colNum == -1) 
 				return false;
 
 			sheet.autoSizeColumn(colNum);
@@ -213,7 +219,7 @@ public class ReadExcelFile {
 
 	public int getLastRow(String sheetName) {
 		sheet = workbook.getSheet(sheetName);
-		int lastSheet = sheet.getLastRowNum()+1;
+		int lastSheet = sheet.getLastRowNum();
 		return lastSheet;
 	}
 	/****************** Returns true if data is set successfully else false ***********************//*
