@@ -14,6 +14,7 @@ public class TestCaseOne extends BasicAutomation {
 	public void TC001() { //To check the functionality of "Travel Insurance"  button
 		logger = report.createTest("Test Case One- To check the functionality of 'Travel Insurance'  button");
 		invokeBrowser("chrome");
+		
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
 		MainPageForm mainPage = homePage.clickIns();
@@ -26,11 +27,12 @@ public class TestCaseOne extends BasicAutomation {
 	public void TC002() { //To check whether the user is able to search for European countries using search bar.
 		logger = report.createTest("Test Case Two - To check whether the user is able to search for European countries using search bar.");
 		invokeBrowser("chrome");
+		String[] data = PageBaseClass.getExcelData(2);
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
 		MainPageForm mainPage = homePage.clickIns();
 		addWait(10);
-		mainPage.selectCountry("Germany");
+		mainPage.selectCountry(data);
 	}
 	
 	@Test
@@ -38,10 +40,11 @@ public class TestCaseOne extends BasicAutomation {
 		logger = report.createTest("Test Case Three - To check whether the user is able to select the preferred European country from the given list.");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
+		String[] data = PageBaseClass.getExcelData(2);
 		HomePage homePage = pageClass.openWebsite();
 		MainPageForm mainPage = homePage.clickIns();
 		addWait(10);
-		mainPage.selectCountry("France");
+		mainPage.selectCountry(data);
 	}
 	
 	@Test
@@ -63,13 +66,14 @@ public class TestCaseOne extends BasicAutomation {
 		logger = report.createTest("Test Case Five - To check whether user can enter age details of first person in the age dropbox");
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
+		String[] data = PageBaseClass.getExcelData(2);
 		HomePage homePage = pageClass.openWebsite();
 		MainPageForm mainPage = homePage.clickIns();
 		addWait(10);
 		elementClick("travellerLabel_Xpath");
-		mainPage.addTraveller("21 yrs","22 yrs");
+		mainPage.addTraveller(data);
 		elementClick("nextButton_Xpath");
-		mainPage.selectDate("25/05/2021","25/06/2021");
+		mainPage.selectDate(data);
 		String quoteBtnAtr=getElement("getQuoteButton_Id").getAttribute("class");
 		Assert.assertEquals(quoteBtnAtr.contains("active"), false);
 	}
@@ -78,14 +82,15 @@ public class TestCaseOne extends BasicAutomation {
 	public void TC006() { //To check the functionality of "Any Pre-Existing Medical Condition" checkbox for thr first traveller.
 		logger = report.createTest("Test Case Six - To check the functionality of \"Any Pre-Existing Medical Condition\" checkbox for thr first traveller."); 
 		invokeBrowser("chrome"); PageBaseClass pageClass = new PageBaseClass(driver,logger); 
+		String[] data = PageBaseClass.getExcelData(2);
 		HomePage homePage = pageClass.openWebsite(); 
 		MainPageForm mainPage = homePage.clickIns(); 
 		addWait(10); 
-		mainPage.selectCountry("France"); 
+		mainPage.selectCountry(data); 
 		mainPage.selectElementByText("firstTravellerAge_Xpath","21 yrs"); 
 		logger.log(Status.INFO,"First traveller added"); 
 		addWait(10); 
-		mainPage.addTraveller("21 yrs","22 yrs"); 
+		mainPage.addTraveller(data); 
 	} 
 	
 	@Test 
@@ -94,12 +99,13 @@ public class TestCaseOne extends BasicAutomation {
 		invokeBrowser("chrome"); 
 		PageBaseClass pageClass = 
 		new PageBaseClass(driver,logger); 
+		String[] data = PageBaseClass.getExcelData(2);
 		HomePage homePage = pageClass.openWebsite(); 
 		MainPageForm mainPage = homePage.clickIns(); 
 		addWait(10); 
-		mainPage.selectCountry("France"); 
+		mainPage.selectCountry(data); 
 		elementClick("travellerLabel_Xpath"); 
-		mainPage.addTraveller("21 yrs","22 yrs"); 
+		mainPage.addTraveller(data); 
 		elementClick("medicalCondition_Id"); 
 		Assert.assertEquals(isElementSelected("medicalCondition_Id"),true);
 	}

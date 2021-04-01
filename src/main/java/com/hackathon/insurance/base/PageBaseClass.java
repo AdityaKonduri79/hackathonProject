@@ -26,7 +26,7 @@ public class PageBaseClass extends BasicAutomation{
 
 	
 	public ExtentTest logger;
-	public ReadExcelFile excel;
+	public static ReadExcelFile excel;
 	
 	public PageBaseClass(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
@@ -66,7 +66,7 @@ public class PageBaseClass extends BasicAutomation{
 	}
 	
 	/****************************************************
-	 					SELECT DATES
+	 					SELECT COUNTRIES
 	 ****************************************************/
 	public void selectCountrySearch( String country) {
 //		excel = new ReadExcelFile(System.getProperty("user-dir")+"\\test-output\\data-sheet.xlsx");
@@ -85,7 +85,7 @@ public class PageBaseClass extends BasicAutomation{
 		 try
 		    {
 		      //create SimpleDateFormat object with source string date format
-		      SimpleDateFormat sdfSource = new SimpleDateFormat("dd/MM/yy");
+		      SimpleDateFormat sdfSource = new SimpleDateFormat("dd-MM-yyyy");
 		      //parse the string into Date object
 		      Date sdate = sdfSource.parse(startDate);
 		      Date edate = sdfSource.parse(endDate);
@@ -95,9 +95,9 @@ public class PageBaseClass extends BasicAutomation{
 		      String startConvDate = sdfDestination.format(sdate);
 		      String endConvDate = sdfDestination.format(edate);
 		      
-		      if(!startDate.contains("/03/") || !startDate.contains("/04/"))
+		      if(!startDate.contains("/04/") || !startDate.contains("/05/"))
 		      {
-		    	  int n = Integer.parseInt(endDate.substring(3, 5)) - 4;		    			  
+		    	  int n = Integer.parseInt(endDate.substring(3, 5)) - 5;		    			  
 		    	  for (int i = 0; i <= n; i++) {
 		    		System.out.println(i);
 					elementClick("dateForward_Btn_Xpath");
@@ -124,7 +124,27 @@ public class PageBaseClass extends BasicAutomation{
 	}
 	
 	
+	public static void setExcelData(String provider, String amount) {
+		excel = new ReadExcelFile(System.getProperty("user.dir")+
+				"\\src\\test\\resources\\ObjectRepositiory\\dataSheet.xlsx");
+		int i = excel.getLastRow("OutputData");
+		
+		excel.setCellData("OutputData", 0, i, provider);
+		excel.setCellData("OutputData", 1, i, amount);
+	}
 	
+	public static String[] getExcelData(int rowNum) {
+		String[] data = new String[30];
+		excel = new ReadExcelFile(System.getProperty("user.dir")
+			+ "\\src\\test\\resources\\ObjectRepositiory\\dataSheet.xlsx");
+	for(int colNum=0; colNum<excel.getColumnCount("InputData") ; colNum++) {
+		data[colNum] = excel.getCellData("InputData",colNum , rowNum);
+		System.out.println(data[colNum]);
+	}
+	
+	return data;
+		
+	}
 	/****************************************************
 	 					SELECT ELEMENT
 	 ****************************************************/

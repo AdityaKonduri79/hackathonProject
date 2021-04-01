@@ -9,20 +9,22 @@ import com.hackathon.insurance.base.MainPageForm;
 import com.hackathon.insurance.base.PageBaseClass;
 
 public class ProblemStatementTest extends BasicAutomation {
-//	@Test
+
+	@Test
 	public void testCaseOne() {
 		logger = report.createTest("Test Case One");
+		PageBaseClass.getExcelData(2);
+		String[] data = PageBaseClass.getExcelData(2);
 		invokeBrowser("chrome");
 		PageBaseClass pageClass = new PageBaseClass(driver,logger);
 		HomePage homePage = pageClass.openWebsite();
 		MainPageForm mainPage = homePage.clickIns();
-		mainPage.selectCountry("france");
-		mainPage.addTraveller("21 yrs","22 yrs");
+		mainPage.selectCountry(data);
+		mainPage.addTraveller(data);
 		elementClick("nextButton_Xpath");
-		mainPage.selectDate("25/05/2021","25/06/2021");
-		InsuranceList insList = mainPage.enterPhoneDetails("India","9876543210");
+		mainPage.selectDate(data);
+		InsuranceList insList = mainPage.enterPhoneDetails(data);
 		insList.sortList();
 		insList.selectTopThree();
-
 	}
 }

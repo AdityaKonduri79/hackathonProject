@@ -15,29 +15,29 @@ public class MainPageForm extends PageBaseClass{
 
 	
 	
-	public void selectCountry(String country) {
-		selectCountrySearch(country);
+	public void selectCountry(String[] dataSet) {
+		selectCountrySearch(dataSet[0]);
 		logger.log(Status.PASS, "Country selected succesfully");
 	}
 	
-	public void addTraveller(String firstAge, String secondAge) {
+	public void addTraveller(String[] dataSet) {
 		try{
 //			elementClick("travellerLabel_Xpath");
-			selectElementByText("firstTravellerAge_Xpath", firstAge);
+			selectElementByText("firstTravellerAge_Xpath", dataSet[1]);
 			logger.log(Status.INFO, "First traveller added");
 			addWait(10);
 			elementClick("addTraveller_Btn_Xpath");
-			selectElementByText("secondTravellerAge_Xpath", secondAge);
+			selectElementByText("secondTravellerAge_Xpath", dataSet[2]);
 			logger.log(Status.INFO, "Second traveller added");
 		}
 		catch(Exception e) {
 			reportFail(e.getMessage());
 		}
 	}
-	public void selectDate(String startDate, String endDate) {
+	public void selectDate(String[] dataSet) {
 		///The date format MUST BE IN "dd/mm/yyyy" FORMAT///
 		try{
-			selectDates(startDate,endDate);
+			selectDates(dataSet[3],dataSet[4]);
 			elementClick("getQuote_Btn_Xpath");
 			reportPass("Dates selected Succesfully");
 		}
@@ -48,11 +48,11 @@ public class MainPageForm extends PageBaseClass{
 	}
 	
 	
-	public InsuranceList enterPhoneDetails(String countryName, String phoneNumber) {
+	public InsuranceList enterPhoneDetails(String[] dataSet) {
 		elementClick("countryCode_Xpath");
-		enterText("countryCodeName_Xpath",countryName);
+		enterText("countryCodeName_Xpath",dataSet[5]);
 		elementClick("countrycodeSelct_Xpath");
-		enterText("mobileNumber_Id",phoneNumber);
+		enterText("mobileNumber_Id",dataSet[6]);
 		elementClick("getQuote_Btn_Xpath");
 		InsuranceList insList = new InsuranceList(driver, logger);
 		PageFactory.initElements(driver, insList);

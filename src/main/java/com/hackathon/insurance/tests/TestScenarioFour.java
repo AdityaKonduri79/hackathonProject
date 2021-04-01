@@ -16,14 +16,15 @@ public class TestScenarioFour extends BasicAutomation{
 	public void TC020() { //To check the functionality of edit button in destination field.
 	logger = report.createTest("Test Case Twenty - To check the functionality of edit button in destination field.");
 	invokeBrowser("chrome");
+	String[] data = PageBaseClass.getExcelData(2);
 	PageBaseClass pageClass = new PageBaseClass(driver,logger);
 	HomePage homePage = pageClass.openWebsite();
 	MainPageForm mainPage = homePage.clickIns();
-	mainPage.selectCountry("france");
-	mainPage.addTraveller("21 yrs","22 yrs");
+	mainPage.selectCountry(data);
+	mainPage.addTraveller(data);
 	elementClick("nextButton_Xpath");
-	mainPage.selectDate("25/05/2021","25/06/2021");
-	InsuranceList insList = mainPage.enterPhoneDetails("India", "9832100000");
+	mainPage.selectDate(data);
+	InsuranceList insList = mainPage.enterPhoneDetails(data);
 	insList.destinationEdit("Germany");
 	Assert.assertEquals(isElementPresent("CloseBtn_Xpath"), true);
 
@@ -33,14 +34,15 @@ public class TestScenarioFour extends BasicAutomation{
 	public void TC021() { //To check the functionality of edit button in travellers field.
 	logger = report.createTest("Test Case TwentyOne - To check the functionality of edit button in travellers field.");
 	invokeBrowser("chrome");
+	String[] data = PageBaseClass.getExcelData(2);
 	PageBaseClass pageClass = new PageBaseClass(driver,logger);
 	HomePage homePage = pageClass.openWebsite();
 	MainPageForm mainPage = homePage.clickIns();
-	mainPage.selectCountry("france");
-	mainPage.addTraveller("21 yrs", "22 yrs");
+	mainPage.selectCountry(data);
+	mainPage.addTraveller(data);
 	elementClick("nextButton_Xpath");
-	mainPage.selectDate("25/05/2021","25/06/2021");
-	InsuranceList insList = mainPage.enterPhoneDetails("India", "9831200000");
+	mainPage.selectDate(data);
+	InsuranceList insList = mainPage.enterPhoneDetails(data);
 	insList.travellerEdit();
 	Assert.assertEquals(isElementPresent("CloseBtn_Xpath"), true);
 
@@ -50,14 +52,15 @@ public class TestScenarioFour extends BasicAutomation{
 	public void TC022() { //To check the functionality of edit button in Date field.
 	logger = report.createTest("Test Case TwentyTwo - To check the functionality of edit button in Date field.");
 	invokeBrowser("chrome");
+	String[] data = PageBaseClass.getExcelData(2);
 	PageBaseClass pageClass = new PageBaseClass(driver,logger);
 	HomePage homePage = pageClass.openWebsite();
 	MainPageForm mainPage = homePage.clickIns();
-	mainPage.selectCountry("france");
-	mainPage.addTraveller("21 yrs","22 yrs");
+	mainPage.selectCountry(data);
+	mainPage.addTraveller(data);
 	elementClick("nextButton_Xpath");
-	mainPage.selectDate("25/05/2021","25/06/2021");
-	InsuranceList insList = mainPage.enterPhoneDetails("India", "9832100000");
+	mainPage.selectDate(data);
+	InsuranceList insList = mainPage.enterPhoneDetails(data);
 	insList.dateEdit();
 	Assert.assertEquals(isElementPresent("CloseBtn_Xpath"), true);
 	}
@@ -66,14 +69,15 @@ public class TestScenarioFour extends BasicAutomation{
 	public void TC023() {//To check the functionality of sort button.
 	logger = report.createTest("Test Case TwentyTwo - To check the functionality of sort button.");
 	invokeBrowser("chrome");
+	String[] data = PageBaseClass.getExcelData(2);
 	PageBaseClass pageClass = new PageBaseClass(driver,logger);
 	HomePage homePage = pageClass.openWebsite();
 	MainPageForm mainPage = homePage.clickIns();
-	mainPage.selectCountry("france");
-	mainPage.addTraveller("21 yrs","22 yrs");
+	mainPage.selectCountry(data);
+	mainPage.addTraveller(data);
 	elementClick("nextButton_Xpath");
-	mainPage.selectDate("25/05/2021","25/06/2021");
-	InsuranceList insList = mainPage.enterPhoneDetails("India", "9832100000");
+	mainPage.selectDate(data);
+	InsuranceList insList = mainPage.enterPhoneDetails(data);
 	insList.sortList();
 	insList.selectTopThree();
 	}

@@ -27,8 +27,9 @@ public class InsuranceList extends PageBaseClass {
 		while (priceIterator.hasNext() && providerIterator.hasNext()) {
 			WebElement priceElement = (WebElement) priceIterator.next();
 			WebElement providerElement = (WebElement) providerIterator.next();
-			System.out.print(providerElement.getAttribute("class").replace("Logo", ""));
-			System.out.print(" - "+priceElement.getText().replace("₹ ", ""));
+			String provider = providerElement.getAttribute("class").replace("Logo", "");
+			String price = priceElement.getText().replace("₹ ", "");
+			PageBaseClass.setExcelData(provider, price);
 			System.out.println();
 		}
 	}

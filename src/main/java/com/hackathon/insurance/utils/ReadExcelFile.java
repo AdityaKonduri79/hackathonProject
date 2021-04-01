@@ -4,7 +4,10 @@ package com.hackathon.insurance.utils;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -140,8 +143,13 @@ public class ReadExcelFile {
 				return cell.getStringCellValue();
 			else if (cell.getCellType() == CellType.NUMERIC || cell.getCellType() == CellType.FORMULA) {
 
-				String cellText = String.valueOf(cell.getNumericCellValue());
-
+				String cellText; 
+				if (DateUtil.isCellDateFormatted(row.getCell(colNum))) { 
+					Date date = row.getCell(colNum).getDateCellValue();  
+					DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");  
+		            cellText = dateFormat.format(date); 
+				 }
+				else cellText = String.valueOf(cell.getNumericCellValue());
 				return cellText;
 			} else if (cell.getCellType() == CellType.BLANK)
 				return "";
@@ -156,7 +164,7 @@ public class ReadExcelFile {
 
 	
 	/****************** Returns true if data is set successfully else false ***********************/
-	public boolean setCellData(String sheetName, String colName, int rowNum, String data) {
+	public boolean setCellData(String sheetName, int colName, int rowNum, String data) {
 		try {
 			fis = new FileInputStream(path);
 			workbook = new XSSFWorkbook(fis);
@@ -172,11 +180,6 @@ public class ReadExcelFile {
 			sheet = workbook.getSheetAt(index);
 
 			row = sheet.getRow(0);
-			for (int i = 0; i < row.getLastCellNum(); i++) {
-				// System.out.println(row.getCell(i).getStringCellValue().trim());
-				if (row.getCell(i).getStringCellValue().trim().equals(colName))
-					colNum = i;
-			}
 			if (colNum == -1)
 				return false;
 
@@ -208,7 +211,11 @@ public class ReadExcelFile {
 		return true;
 	}
 
-
+	public int getLastRow(String sheetName) {
+		sheet = workbook.getSheet(sheetName);
+		int lastSheet = sheet.getLastRowNum()+1;
+		return lastSheet;
+	}
 	/****************** Returns true if data is set successfully else false ***********************//*
 	public boolean setCellData(String sheetName, String colName, int rowNum, String data, String url) {
 		try {
